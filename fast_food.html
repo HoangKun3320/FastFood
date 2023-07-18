@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger</title>
+    <link rel="icon" href="https://iconutopia.com/wp-content/uploads/2016/06/space-dog-laika1.png"
+        type="image/x-icon" />
+    <!-- <link rel="stylesheet" href="assets/css/W3.css"> -->
+    <!-- <link rel="stylesheet" href="/assets/css/W3MobiRes.css"> -->
+    <link rel="stylesheet" href="fast_food.css">
+    <link rel="stylesheet" href="response.css">
+    <link rel="stylesheet" href="assets/fonts/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- bootstrap link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- bootstrap link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="home-section">
+            <nav class="navbar navbar-expand-lg" id="navbar">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#" id="logo">
+                        <img src="./img/logo_icon.png" width="30px" alt="">
+                        Bela
+                        <span>
+                            Bugger
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#" id="first-child">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Bugger</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Other
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                                    style="background-color: #ffc800;">
+                                    <li><a class="dropdown-item" href="#">Burgers</a></li>
+                                    <li><a class="dropdown-item" href="#">Fries</a></li>
+                                    <li><a class="dropdown-item" href="#">Drinks</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <div class="icons">
+                                <div v-on:click="appearSignInList" class="icon_item">
+                                    <i class="fa-solid fa-user"></i>
+                                    <ul class="signin_wrap" :style="{ display: onOffSignInList}">
+                                        <li v-on:click="appearSignIn" class="signin_item signin">Sign In</li>
+                                        <li class="signin_item signup">Sign Up</li>
+                                    </ul>
+                                </div>
+                                <div v-on:click="appearCart" class="icon_item icon_item_cart">
+                                    <i class="fa-solid fa-cart-shopping nav_cart"></i>
+                                    <div class="header_cart_list_wrap" :style="{ display: onOffCart}">
+                                        <div class="header_cart_list_heading">
+                                            Products Added To Cart
+                                            <span><i class="fa-solid fa-trash-can" style="margin-right: 6px "></i>Remove
+                                                All</span>
+                                        </div>
+                                        <ul class="header_cart_list">
+                                            <li class="header_cart_item">
+                                                <div class="header_cart_body">
+                                                    <p class="cart_item_name">Spicy Beef Burger</p>
+                                                    <p class="cart_item_price">￥370円</p>
+                                                </div>
+                                                <div class="header_cart_active">
+                                                    <button class="cart_item_btn">change</button>
+                                                    <div class="cart_item_count">
+                                                        <i class="fa-solid fa-circle-plus"
+                                                            style="margin-right: 10px;"></i>
+                                                        2
+                                                        <i class="fa-solid fa-circle-minus"
+                                                            style="margin-left: 10px;"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="header_cart_item">
+                                                <div class="header_cart_body">
+                                                    <p class="cart_item_name">Spicy Shrimp Burger</p>
+                                                    <p class="cart_item_price">￥370円</p>
+                                                </div>
+                                                <div class="header_cart_active">
+                                                    <button class="cart_item_btn">change</button>
+                                                    <div class="cart_item_count">
+                                                        <i class="fa-solid fa-circle-plus"
+                                                            style="margin-right: 10px;"></i>
+                                                        1
+                                                        <i class="fa-solid fa-circle-minus"
+                                                            style="margin-left: 10px;"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="header_cart_item">
+                                                <div class="header_cart_body">
+                                                    <p class="cart_item_name">Bacon Chiken Burger</p>
+                                                    <p class="cart_item_price">￥490円</p>
+                                                </div>
+                                                <div class="header_cart_active">
+                                                    <button class="cart_item_btn">change</button>
+                                                    <div class="cart_item_count">
+                                                        <i class="fa-solid fa-circle-plus"
+                                                            style="margin-right: 10px;"></i>
+                                                        1
+                                                        <i class="fa-solid fa-circle-minus"
+                                                            style="margin-left: 10px;"></i>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="header_cart_list_footer">
+                                            <div class="cart_list_footer_item">
+                                                <i class="fa-solid fa-cart-shopping nav_cart"></i>
+                                                <span class="header_cart_notice">
+                                                    3
+                                                </span>
+                                                <p>￥1,130円</p>
+                                            </div>
+                                            <button class="cart_list_footer_btn">Order</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Home content -->
+            <div class="home_wrap">
+                <section class="home1">
+                    <div class="img">
+                        <img src="img/home_content.png" alt="">
+                    </div>
+                    <div class="content1">
+                        <p>
+                            Made For You
+                            <br>
+                        </p>
+                        <a>
+                            Bela
+                            <span>Burger</span>
+                        </a>
+                        <p>Explore. Taste. Experience.</p>
+                    </div>
+                </section>
+                <section class="home2">
+                    <div class="content2">
+                        <p>
+                            Made For You
+                            <br>
+                        </p>
+                        <a>
+                            Bela
+                            <span>Coffee</span>
+                        </a>
+                        <p>Explore. Taste. Experience.</p>
+                    </div>
+                    <div class="img">
+                        <img src="img/coffee_content_edited.png" alt="">
+                    </div>
+                </section>
+            </div>
+
+            <!-- Cards -->
+            <div class="container" id="cards">
+                <div class="row">
+                    <div class="col-md-6 py-3 py-md-0 card1">
+                        <div class="card">
+                            <img src="img/card1.png" alt="">
+                            <div class="card-img-overlay">
+                                <h3>Double Potato Set</h3>
+                                <p>Double Potato - Double Happy</p>
+                                <button id="rn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3 py-md-0 card2">
+                        <div class="card">
+                            <img src="img/card3.png" alt="">
+                            <div class="card-img-overlay">
+                                <h3>Best Friends Set</h3>
+                                <p>Let’s Get This Patty Started</p>
+                                <button id="rn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3 py-md-0 card3">
+                        <div class="card">
+                            <img src="img/card2.png" alt="">
+                            <div class="card-img-overlay">
+                                <h3> Couple Set</h3>
+                                <p>Better With Buns Together</p>
+                                <button id="rn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3 py-md-0 card4">
+                        <div class="card">
+                            <img src="img/card4.png" alt="">
+                            <div class="card-img-overlay">
+                                <h3>Funny Set</h3>
+                                <p>For The Love of Burgers</p>
+                                <button id="rn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cards -->
+            <!-- menu -->
+            <div class="container" id="burger">
+                <div class="tabs">
+                    <div class="tab_item active">Burger</div>
+                    <div class="tab_item">Set</div>
+                    <div class="tab_item">Frieds</div>
+                    <div class="tab_item">Drinks</div>
+                    <div class="line"></div>
+                </div>
+                <div class="tab_content">
+                    <div class="tab_pane active">
+                        <h1>Menu Burger</h1>
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/bacon_chesse_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Bacon Chesse Burger</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥490円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/bacon_chiken_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Bacon Chiken Burger</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥450円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/spicy_beef_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Spicy Beef Burger</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥390円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div><S></S>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/chesse_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3 style="padding-right: 40px;">Chesse Burger</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 18px;">
+                                            ￥290円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/spicy_shrimp_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Spicy Shrimp Burger</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥370円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/fish_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3 style="padding-right: 78px;">Fish Burger</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 30px;">
+                                            ￥410円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/chiken_black_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Chiken Black Burger</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥430円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/beef_black_burger.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Beef Black Burger</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥470円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- set -->
+                    <div class="tab_pane">
+                        <h1>Menu Set</h1>
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/chesse_set.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Chesse Set</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥490円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/black_beef_set.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Black Beef Set</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥550円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/card1.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Double Potato Set</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥690円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div><S></S>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/shaka_poteto_set.png" alt="">
+                                    <div class="card-body">
+                                        <h3 style="padding-right: 40px;">Shaka Potato Set</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 18px;">
+                                            ￥490円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/double_chesse_set.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Double Chesse Set</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥570円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/bacon_avocado.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Bacon Avocado Set</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 30px;">
+                                            ￥510円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/best_friends_set.jpg" alt="">
+                                    <div class="card-body">
+                                        <h3>Best Friends Set</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥1430円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/family_set.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Family Set</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥1970円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- frieds -->
+                    <div class="tab_pane">
+                        <h1>Menu Fried</h1>
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/regular_chicken.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Regular Chicken Fried</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥390円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/potato.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Potato Fried</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥250円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/potato_chesse_ball.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Potato Chesse Ball</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥290円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div><S></S>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/fried_ice_cream.png" alt="">
+                                    <div class="card-body">
+                                        <h3 style="padding-right: 40px;">Fried Ice Cream</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 18px;">
+                                            ￥270円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/khoai_tay_loc_xoay.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Potato Tornado</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥370円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/spicy_cream_potato.png" alt="">
+                                    <div class="card-body">
+                                        <h3 style="padding-right: 78px;">Spicy Potato</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥310円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/fried_mix.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Fried Mix</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥690円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/chicken_potato_onion.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Big Size Mix</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥870円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Drinks -->
+                    <div class="tab_pane">
+                        <h1>Menu Drink</h1>
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/coca.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Coca Cola</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥190円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/coca_zero.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Coca Zero</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥190円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/orange.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Fanta Orange</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥190円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/raspberry.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Fanta Raspberry</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥190円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div><S></S>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 30px;">
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/sprite.png" alt="">
+                                    <div class="card-body">
+                                        <h3 style="padding-right: 40px;">Sprite</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 18px;">
+                                            ￥190円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/Frozen_Fanta_Raspberry.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Frozen Fanta Raspberry</h3>
+                                        <p></p>
+                                        <h5 style="margin-top: 30px;">
+                                            ￥290円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/FrozenFantaMango.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Frozen Fanta Mango</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥290円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 py-3 py-md-0">
+                                <div class="card">
+                                    <img src="img/Frozen_Coke.png" alt="">
+                                    <div class="card-body">
+                                        <h3>Frozen Coca</h3>
+                                        <p></p>
+                                        <h5>
+                                            ￥290円
+                                            <span>
+                                                <i class="fa-solid fa-cart-shopping"></i>
+                                            </span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- menu -->
+
+            <!-- about -->
+            <div class="container" id="about">
+                <h1>About</h1>
+                <div class="row">
+                    <div class="col-md-6 py-3 py-md-0">
+                        <div class="card" style="margin-left: 10%;">
+                            <img src="img/about1.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3 py-md-0" style="margin-top: 4%;">
+                        <p>Inspired by this coastal town’s laid-back vibrancy and passion for culinary exploration, a
+                            simple
+                            idea formed:</p>
+                        <h1>THE LOVE OF THE CRAFT</h1>
+                        <p>This means always chargrilling our burgers over an open flame.
+
+                            It means using only the best ingredients we can find. And bringing everything together
+                            through
+                            our genuine, world-class hospitality. In the end, it all comes from that first idea. A
+                            vision
+                            that became our Habit.</p>
+                        <div id="readmorebtn">
+                            <span>Read More...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- about -->
+            <!-- contact -->
+            <div class="container">
+                <h2 id="h2">Contact</h2>
+            </div>
+            <div class="container" id="contact">
+                <div class="row">
+                    <div class="col-md-6 py-3 py-md-0">
+                        <h3>EMAIL US YOUR GENERAL INQUIRY</h3>
+                        <p>We would love to hear from you. Please feel free to email us here or reach us with the other
+                            two
+                            methods we provided below.</p>
+                        <input type="text" placeholder="Name"><br>
+                        <input type="email" placeholder="Email"><br>
+                        <input type="number" placeholder="Phone"><br>
+                        <button id="btnmessage">Send</button>
+                    </div>
+                    <div class="col-md-6 py-3 py-md-0">
+                        <h3>Info</h3>
+                        <p></p>
+                        <i class="fa-solid fa-phone"><span> 0657703322</span></i><br>
+                        <i class="fa-solid fa-envelope"><span> belaburgerinfo@gmail.com</span></i><br>
+                        <i class="fa-solid fa-location-dot"><span> Osaka</span></i><br>
+                    </div>
+                </div>
+            </div>
+            <!-- contact -->
+
+            <!-- footer -->
+            <div id="footer" style="margin-top: 50px;">
+                <div class="footer-top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 footer-contact">
+                                <a href="#" class="navbar-brand" id="logo2" style="color: #ffc800;"><img
+                                        style=" margin-right: 10px;" src="img/logo_icon.png" alt=""
+                                        width="30px">Bela<span style="color: #fff;margin-left: 6px;">Burger</span></a>
+                                <p style="margin-top: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do
+                                    elusmod tem por incididunt ut labore et dolore magna aliqua.
+                                    Quis ipsum suspendisse ultrices gravida. Risus commodo viver
+                                    ra maecenas accumsan lacus vel facilisis</p>
+                                <div class="footer_info">
+                                    <strong><i class="fa-solid fa-location-dot"> Osaka</i></strong><br>
+                                    <strong><i class="fa-solid fa-phone"></i><strong
+                                            style="margin-left: 5px; font-size: 16px;">0657703322</strong></strong><br>
+                                    <strong><i class="fa-solid fa-envelope"></i><strong
+                                            style="margin-left: 5px; font-size: 16px;">belaburgerinfo@gmail.com</strong></strong>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 footer-links" style="padding-left: 120px;">
+                                <h4>About BB</h4>
+                                <ul>
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="">About</a></li>
+                                    <li><a href="">Careers</a></li>
+                                    <li><a href="">Nutrition</a></li>
+                                    <li><a href="">Services</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 footer-links" style="padding-left: 60px;">
+                                <h4>Support</h4>
+                                <ul>
+                                    <li><a href="">Contact</a></li>
+                                    <li><a href="">FAQ</a></li>
+                                    <li><a href="">Crown Card</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-6 footer-links" style="padding-left: 70px;">
+                                <h4 style="color: #000; margin-left: 34px;">Stay Connected</h4>
+                                <div class="socail-links mt-3">
+                                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                                    <a href=""><i class="fa-brands fa-google"></i></a>
+                                    <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+                                    <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container py-4">
+                    <div class="copyright" style="color: #000; font-weight: 100;">
+                        &copy; Copyright <strong>Bela Burger</strong>.All Rights reserved
+                    </div>
+                    <div class="credits" style="color: #000; font-weight: 100;">
+                        Designed By <a href="" style="text-decoration: none;">LH coding</a>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+        </div>
+        <!-- Sign In -->
+        <div class="sign_In_Background" :style="{ display: onOffSignIn}" @click="handleBackgroundClick">
+            <div class="sign_in_wrap" id="form-1">
+                <h3 class="heading">Logn In</h3>
+                <p class="desc">
+                    <img src="./img/logo_icon.png" width="30px" alt="">
+                    Bela
+                    <span>
+                        Bugger
+                    </span>
+                </p>
+                <div class="form-group">
+                    <label for="email" class="form-label">Username</label>
+                    <input v-model="username" :style="{borderWidth: '2px', borderColor: colorError}" id="email" name="email" type="text" placeholder="username"
+                        class="form-control">
+                    <span class="form-message" :style="{color: colorError, }">{{usernameErrorMessageUsername}}</span>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input v-model="password" :style="{borderWidth: '2px', borderColor: colorError}" id="password" name="password" type="password" placeholder="password"
+                        class="form-control">
+                    <span class="form-message" :style="{color: colorError, }">{{usernameErrorMessagePassword}}</span>
+                </div>
+                <div class="form-group"
+                    style="display: flex; flex-direction: row; justify-content: space-between; margin: 14px 6px 0 6px;">
+                    <p class="remember_password">
+                        <input type="checkbox">
+                        Remember me
+                    </p>
+                    <p class="forgot_password">
+                        <a href="">Forgot password?</a>
+                    </p>
+                </div>
+                <button class="form-submit" v-on:click="clickSubmit">Logn In</button>
+                <div class="form-group">
+                    <p class="sign_up_message">
+                        Not a member?
+                        <a class="sign_up_link" href="">Create Account</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="fast_food.js"></script>
+    <script>
+
+
+    </script>
+</body>
+
+</html>

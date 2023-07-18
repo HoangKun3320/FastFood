@@ -1,0 +1,41 @@
+@media screen and (max-width) {
+    .navbar-toggler {
+        border: 1px solid black;
+    }
+
+    .icons {
+        margin-left: 25px;
+    }
+}
+
+@media only screen and (max-width: 547px) {
+    .navbar-toggler {
+        border: 1px solid #ffc800;
+        color: #ffc800;
+    }
+
+    .icons {
+        margin-left: 25px;
+    }
+}
+
+/* @media screen and (max-width: 799px) {
+    .home-section {
+        height: 140vh;
+    }
+} */
+/* @media screen and (max-width: 1200px) {
+    .home-section {
+        height: 90vh;
+    }
+} */
+/* @media screen and (max-width: 550px) {
+    .home-section {
+        height: 110vh;
+    }
+} */
+/* @media screen and (max-width: 420px) {
+    .home-section {
+        height: 90vh;
+    }
+} */
